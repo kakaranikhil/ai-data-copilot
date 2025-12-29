@@ -1,6 +1,13 @@
+# Environment variables
 .env
-data/*.duckdb
-data/**/*.duckdb
+
+# macOS
+.DS_Store
+
+# Python cache
 __pycache__/
 *.pyc
-.DS_Store
+
+# Local databases / data
+*.duckdb
+data/workspace.duckdb

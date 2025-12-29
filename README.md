@@ -1,150 +1,120 @@
-# AI Data Copilot 🚀
+# AI Data Copilot 🚀 (Launchable V1)
 
-A lightweight **Streamlit-based data analysis app** that helps you upload datasets, clean data, create versions, and perform quick exploratory analysis — all locally, without heavy setup.
+A lightweight, **local-first Streamlit + DuckDB** data analysis app that lets you upload datasets, clean them, version them, run profiling/quality checks, and generate quick charts — without heavy setup.
 
-This project is designed as a **practical data copilot** for students, analysts, and early-stage data projects.
+> ✅ Runs locally without any API key.  
+> 🤖 AI chat can be enabled later (optional).
 
----
 
 ## ✨ Features
 
-* 📂 Upload CSV or Excel files
-* 🗄️ Versioned dataset storage using DuckDB
-* 🧹 One-click data cleaning (normalize columns, trim strings, remove duplicates, parse dates)
-* 🔍 Dataset profiling (missing values, data types)
-* 📊 Quick analysis:
+- 📂 Upload CSV or Excel files
+- 🗄️ Versioned dataset storage using DuckDB
+- 🧹 One-click cleaning (normalize columns, trim strings, remove duplicates, parse dates)
+- 🔍 Profiling (missing values, data types)
+- ✅ Quality checks (basic validation & summaries)
+- 📊 Quick analysis:
+  - Numeric distributions
+  - Categorical frequency charts
+  - Time-based trends
+- 💾 Data persistence across sessions
+- 🔐 Safe environment variable handling (`.env` is ignored)
 
-  * Numeric distributions
-  * Categorical frequency charts
-  * Time-based trends
-* 💾 Data persistence across sessions
-* 🔐 Secure environment variable handling (`.env` ignored)
-
-> ⚠️ AI chat functionality is currently **disabled by default** (API not required to run the app).
-
----
 
 ## 🏗️ Project Structure
 
-```
 ai_data_copilot/
-│
-├── app.py                     # Main Streamlit app
+├── app.py
 ├── app/
-│   ├── core/
-│   │   ├── warehouse.py       # DuckDB dataset versioning
-│   │   ├── profiling.py       # Basic data profiling
-│   │   └── transforms.py      # Cleaning & transformation logic
-│   └── agent/
-│       └── openai_agent.py    # (Stubbed – AI disabled)
-│
+│ ├── core/
+│ │ ├── warehouse.py
+│ │ ├── profiling.py
+│ │ ├── transforms.py
+│ │ ├── quality.py
+│ │ ├── reports.py
+│ │ ├── projects.py
+│ │ └── sql_safety.py
+│ └── agent/
+│ └── openai_agent.py
 ├── data/
-│   └── workspace.duckdb       # Local DuckDB storage
-│
+│ └── workspace.duckdb
 ├── .gitignore
 └── README.md
-```
 
----
+yaml
+Copy code
+
 
 ## 🧰 Tech Stack
 
-* **Python 3.11**
-* **Streamlit** – UI
-* **Pandas** – Data manipulation
-* **DuckDB** – Lightweight analytics database
-* **Plotly / Streamlit charts** – Visualization
+- Python 3.11
+- Streamlit (UI)
+- Pandas (data wrangling)
+- DuckDB (local analytics warehouse)
+- Plotly / Streamlit charts (visuals)
+- python-dotenv (env vars)
+- OpenAI SDK (optional, only if enabling AI)
 
----
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Clone the repository
-
+### 1) Clone the repo
 ```bash
 git clone https://github.com/kakaranikhil/ai-data-copilot.git
 cd ai-data-copilot
-```
 
-### 2️⃣ Create and activate environment (Conda)
-
-```bash
+2) Create & activate conda env
 conda create -n ai_copilot python=3.11 -y
 conda activate ai_copilot
-```
 
-### 3️⃣ Install dependencies
+3) Install dependencies
+pip install streamlit pandas duckdb pyarrow openpyxl plotly python-dotenv openai
 
-```bash
-pip install streamlit pandas duckdb pyarrow openpyxl plotly python-dotenv
-```
-
-### 4️⃣ Run the app
-
-```bash
+4) Run the app
 streamlit run app.py
-```
 
-Open your browser at:
 
-```
+Open:
+
 http://localhost:8501
-```
 
----
+🔐 Environment Variables (Optional)
 
-## 🔐 Environment Variables
+If you want to enable AI features later, create a .env file:
 
-If you later want to enable AI features, create a `.env` file:
+touch .env
 
-```
+
+Add:
+
 OPENAI_API_KEY=your_api_key_here
-```
 
-⚠️ `.env` is ignored by Git for security.
 
----
+✅ .env is ignored by Git for security.
 
-## 🛑 Current Limitations
+🛑 Current Limitations
 
-* AI chat / SQL generation is **disabled by default**
-* Designed for **local use**
-* Large datasets (> few million rows) not recommended
+Best for local exploration & prototyping
 
----
+Very large datasets (multi-GB) will require performance upgrades (planned)
 
-## 🎯 Use Cases
+🧠 Future Enhancements
 
-* Academic projects
-* Quick dataset exploration
-* Learning data pipelines
-* Portfolio demonstration
-* Lightweight internal tools
+Smarter AI copilot (SQL + insights + safe guards)
 
----
+Better large-dataset performance (lazy loading, sampling, caching)
 
-## 🧠 Future Enhancements
+Export reports (Markdown/PDF)
 
-* Enable AI Copilot mode (SQL + insights)
-* Dataset export
-* Dashboard sharing
-* User authentication
-* Deployment (Streamlit Cloud / HuggingFace)
+Deploy (Streamlit Community Cloud / HuggingFace / Docker)
 
----
+👤 Author
 
-## 👤 Author
+Nikhil Kakara
+Master’s in Operations & Supply Chain Analytics, WPI
+GitHub: https://github.com/kakaranikhil
 
-**Nikhil Kakara**
-Master’s in Operations & Supply Chain Analytics
-Worcester Polytechnic Institute
+📜 License
 
-GitHub: [https://github.com/kakaranikhil](https://github.com/kakaranikhil)
-
----
-
-## 📜 License
-
-This project is open-source and intended for educational and personal use.
-
+Open-source for educational and personal use.
 
